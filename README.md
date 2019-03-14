@@ -2,6 +2,16 @@
 
 > We&#39;ll won a 1st prize and a million yen!!!!!!!!!!
 
+## Containing Libs
+* pug
+    * pug-loader
+    * pug-plain-loader
+* node-sass
+    * sass-loader
+    * mathsass
+* axios
+* pwa
+
 ## Build Setup
 
 ``` bash
