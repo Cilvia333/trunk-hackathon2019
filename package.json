@@ -1,0 +1,27 @@
+{
+  "name": "trunk-hackathon2019",
+  "version": "1.0.0",
+  "description": "We&#39;ll won a 1st prize and a million yen!!!!!!!!!!",
+  "author": "cilvia",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/pwa": "^2.6.0",
+    "nuxt": "^2.4.0"
+  },
+  "devDependencies": {
+    "mathsass": "^0.10.1",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.9",
+    "pug": "^2.0.3",
+    "pug-loader": "^2.4.0",
+    "pug-plain-loader": "^1.0.0",
+    "sass-loader": "^7.1.0"
+  }
+}
