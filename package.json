@@ -16,6 +16,7 @@
     "nuxt": "^2.4.0"
   },
   "devDependencies": {
+    "firebase": "^5.8.6",
     "mathsass": "^0.10.1",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
