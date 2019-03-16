@@ -12,7 +12,7 @@
 html{
   font-family: $noto-font, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   font-size: 62.5%;
-  color: $theme-blue;
+  color: #000;
   box-sizing: border-box;
   margin: 0;
   width: 100%;
@@ -39,7 +39,7 @@ p {
   margin: 0;
 }
 a:link,a:visited {
-  color: $theme-sky;
+  color: #000;
   text-decoration: none;
 }
 :focus {

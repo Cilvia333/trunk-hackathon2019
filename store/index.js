@@ -2,9 +2,7 @@ import axios from 'axios'
 
 export const state = () => {
     return {
-        stores: [{
-
-        }]
+        stores: []
     }
 };
 
@@ -28,8 +26,6 @@ export const actions = {
                 longitude: position.coords.longitude
             }
         })
-        console.log(position.coords.latitude)
-        console.log(position.coords.longitude)
         commit("setStores", res)
     }
 };

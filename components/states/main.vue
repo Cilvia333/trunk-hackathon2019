@@ -1,12 +1,14 @@
 <template lang="pug">
-section.container 
-    p hogehoge
-    h1.genre {{category_name}}
-    h2.name {{restaurant}}
+section
+  menu
+    img.umbrella()
+  main
+    h1.category_name {{category_name}}
+    h2.restaurant {{restaurant}}
     ImgCarousel
-    h3.money {{value}}
-    h3.duration {{time}}
-    a.detail(src="https://www.jalan.net/news/article/203522/")
+    h3.value {{value}}
+    h3.time {{time}}
+    a.link(:src="link")
 </template>
 
 <script>
@@ -37,9 +39,9 @@ export default {
         return this.$store.stores[0].time
       }
     },
-    detail() {
+    link() {
       if(this.$store.stores != null){
-        return "hoge"//this.$store.stores[0].detail
+        return this.$store.stores[0].link
       }
     }
   },
@@ -47,5 +49,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~/assets/style/variables.scss";
+@import "~/assets/style/mixin.scss";
 
+menu{
+  width: 100%;
+  height: 80px;
+  background: $theme-orange;
+}
 </style>

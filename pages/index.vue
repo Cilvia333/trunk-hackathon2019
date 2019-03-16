@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.container
+  div
     div(v-if = "nowState === 'Main'")
       Main
     div(v-else-if = "nowState==='Error'")
@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import Main from "~/states/main.vue"
-import Error from "~/states/error.vue"
-import Loading from "~/states/loading.vue"
+import Main from "~/components/states/main.vue"
+import Error from "~/components/states/error.vue"
+import Loading from "~/components/states/loading.vue"
 
 export default {
   components: {
@@ -22,15 +22,29 @@ export default {
   },
   data: function() {
     return {
-      nowState: "Main"
+      nowState: "Loading"
     }
   },
   async mounted() {
     navigator.geolocation.getCurrentPosition(this.loadStoreData)
   },
+  computed: {
+    storeData() {
+      return this.$store.stores
+    }
+  },
+  watch: {
+    storeData(val) {
+      console.log(val)
+      this.changeState("Main")
+    }
+  },
   methods: {
     async loadStoreData(position) {
       await this.$store.dispatch("getStoresFromGPS",position)
+    },
+    changeState(state){
+      nowState = state
     }
   }
 }
