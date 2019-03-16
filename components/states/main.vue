@@ -4,22 +4,15 @@ section
     img.umbrella(src="~/assets/imgs/umbrella.svg")
     .text 君の行く店はココだ！
   main
-    .category
-      .category_
-      .category_name {{restaurantData.category_name}}
-    .restaurant {{restaurantData.name}}
-    ImgCarousel
-    h3.value {{restaurantData.budget}}
-    h3.catch {{restaurantData.catch}}
-    a.link(:src="restaurantData.link")
+    CardWrapper
 </template>
 
 <script>
-import Card from "~/components/card.vue"
+import CardWrapper from "~/components/cardWrapper.vue"
 
 export default {
   components: {
-    Card
+    CardWrapper
   }
 }
 </script>

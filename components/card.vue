@@ -1,12 +1,14 @@
 <template lang="pug">
 section
     .container
-        h1.category_name {{restaurantData.category_name}}
-        h2.restaurant {{restaurantData.name}}
-        ImgCarousel
-        h3.value {{restaurantData.budget}}
-        h3.catch {{restaurantData.catch}}
-        a.link(:src="restaurantData.link")
+    .category
+        .category_prefecture {{restaurantData.prefecture}}
+        .category_name {{restaurantData.category_name}}
+    .restaurant {{restaurantData.name}}
+    ImgCarousel
+    h3.value {{restaurantData.budget}}
+    h3.catch {{restaurantData.catch}}
+    a.link(:src="restaurantData.link")
 </template>
 
 <script>
