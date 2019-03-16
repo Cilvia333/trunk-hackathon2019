@@ -1,0 +1,8 @@
+@mixin noto-font($size:1.6rem, $color:$theme-blue) {
+  font-family: $noto-font;
+  font-size: $size;
+  color: $color;
+  font-feature-settings: "pkna";
+  letter-spacing: 0.1rem;
+  line-height: 1.6;
+}
