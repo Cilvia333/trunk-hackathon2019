@@ -1,5 +1,7 @@
 <template lang="pug">
   div
+    .dummywrap
+      .dummy(ref="dummy")
     .card-wrapper
       .card(v-for="(restaurantData, restaurant_id) in cards_data" :key="`key-${restaurant_id}`" :style="{top:`${top_position}px`,left:`${left_position}px`}")
         .takoyaki(draggable="true", @dragstart="dragStart", @dragend="dragEnd")
@@ -38,8 +40,11 @@ export default {
   },
   methods: {
     dragStart(ev) {
-      ev.dataTransfer.setDragImage(ev.target.cloneNode(true), 0, 0)
-      // ev.target.style.opacity = '0'
+      ev.dataTransfer.effectAllowed  ='move'
+      ev.dataTransfer.dropEffect  = 'move'
+      this.$refs.dummy.innerHTML = ev.target.innerHTML;
+      ev.dataTransfer.setDragImage(this.$refs.dummy, this.$refs.dummy.offsetWidth / 2, this.$refs.dummy.offsetHeight / 2)
+      ev.target.style.opacity = '0'
     },
     dragEnd(ev) {
       ev.target.style.opacity = ''
@@ -68,6 +73,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.dummywrap {
+  position: fixed;
+  top: -999999px;
+  left: 999999px;
+}
 .card-wrapper {
   position: relative;
   width: auto;
