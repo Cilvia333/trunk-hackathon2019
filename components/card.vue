@@ -1,5 +1,5 @@
 <template lang="pug">
-.card
+.card(:data-swiped="is_swiped" :data-position="restaurant_id" @transitionend="NoticeAnimationEnd")
   .card-wrapper
     .category
       .category_name
@@ -29,7 +29,11 @@ export default {
   components: {
     restaurantImg
   },
-  props: ["restaurant_data"],
+  props: [
+    "restaurant_data",
+    "restaurant_id",
+    "is_swiped"
+  ],
   methods:{
     categoryImg(category){
       switch(category){
@@ -39,9 +43,10 @@ export default {
         case "茶そば": return "tyasoba"; break;
         case "ラーメン": return "ramen"; break;
         default: return null; break;
+      },
+      NoticeAnimationEnd() {
+        this.$emit("finishAnimation",this.is_swiped)
       }
-    }
-  }
 }
 </script>
 
@@ -60,7 +65,24 @@ export default {
   border-radius: 12px;
   background: #fff;
   overflow-y: overlay;
+  transition: left 0s $bezier-ease-in;
 }
+
+.card[data-position="0"]{
+  z-index: 2;
+}
+
+.card[data-position="0"][data-swiped="right"]{
+  left:120%;
+  transition: left 0.1s $bezier-ease-in;
+
+}
+
+.card[data-position="0"][data-swiped="left"]{
+  left:-120%;
+  transition: left 0.1s $bezier-ease-in;
+}
+
 .category {
   width: 100%;
   height: 46px;
