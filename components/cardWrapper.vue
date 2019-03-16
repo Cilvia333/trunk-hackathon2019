@@ -1,6 +1,6 @@
 <template lang="pug">
-  section
-    Card(v-for="(restaurantData, restaurant_id) in cards_data" :key="`key-${restaurant_id}`" :restaurant_data="restaurantData")
+  .card-wrapper-child
+    Card(v-for="(restaurantData, restaurant_id) in cards_data" :key="`rest-${restaurant_id}`" :restaurant_data="restaurantData")
 </template>
 
 <script>
@@ -41,6 +41,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.card-wrapper-child {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 </style>
 

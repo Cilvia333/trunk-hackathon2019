@@ -4,10 +4,10 @@
     .reload(@click="")
       img.umbrella(src="~/assets/imgs/umbrella.svg")
     .text 君の行く店はココだ !
-  main
-    nuxt-link(:to="go_link")
+  .cards
+    .cards-wrapper: CardWrapper
+  nuxt-link(:to="go_link")
       .go-button: .go-text Go!
-    CardWrapper
 </template>
 
 <script>
@@ -59,7 +59,7 @@ menu{
     left: 0;
     width: auto;
     height: 60px;
-    .umbrella{
+    .umbrella {
       display: block;
       margin-left: 8px;
       width: 60px;
@@ -71,6 +71,21 @@ menu{
     padding-top: 4px;
     @include noto-font(2rem,#fff);
     font-weight: 700;
+  }
+}
+.cards{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 60px; /*menu-bar*/
+  padding-bottom: (60px + 20px);
+  .cards-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
   }
 }
 
@@ -85,7 +100,6 @@ menu{
   background: $theme-orange;
   background: $theme-gradient;
   border-radius: 12px;
-  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
