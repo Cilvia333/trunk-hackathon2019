@@ -7,7 +7,7 @@ export const state = () => {
 };
 
 export const mutations = {
-    setStores (state, restaurants) {
+    setRetaurants (state, restaurants) {
         state.restaurants = restaurants
     }
 };
