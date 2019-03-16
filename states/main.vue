@@ -1,5 +1,6 @@
 <template lang="pug">
-section.container hogehoge
+section.container 
+    p hogehoge
     h1.genre {{category_name}}
     h2.name {{restaurant}}
     ImgCarousel
@@ -12,10 +13,10 @@ section.container hogehoge
 import ImgCarousel from "~/components/imgCarousel.vue"
 
 export default {
-    components: {
-        ImgCarousel
-    },
-    computed: {
+  components: {
+      ImgCarousel
+  },
+  computed: {
     category_name() {
       if(this.$store.stores != null){
         return this.$store.stores[0].category_name

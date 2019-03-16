@@ -22,7 +22,14 @@ export const actions = {
             longitude: position.coords.longitude
         })
         */
-        const res = await this.$axios.$get('http://dcb8a098.ngrok.io/search?longitude=pokemon&latitude=takoyaki')
+        const res = await this.$axios.$get('http://dcb8a098.ngrok.io/search',{
+            params :{
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+            }
+        })
+        console.log(position.coords.latitude)
+        console.log(position.coords.longitude)
         commit("setStores", res)
     }
 };

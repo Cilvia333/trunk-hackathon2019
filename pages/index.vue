@@ -1,6 +1,12 @@
 <template lang="pug">
   section.container
-    component(:is="nowState")
+    div(v-if = "nowState === 'Main'")
+      Main
+    div(v-else-if = "nowState==='Error'")
+      Error
+    div(v-else-if = "nowState==='Loading'")
+      transition
+        Loading
 </template>
 
 <script>
@@ -20,10 +26,12 @@ export default {
     }
   },
   async mounted() {
-    await this.$store.dispatch("getStoresFromGPS")
+    navigator.geolocation.getCurrentPosition(this.loadStoreData)
   },
   methods: {
-
+    async loadStoreData(position) {
+      await this.$store.dispatch("getStoresFromGPS",position)
+    }
   }
 }
 </script>
