@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const state = () => {
     return {
-        restaurants: []
+        restaurants: [],
     }
 };
 
@@ -31,7 +31,7 @@ export const actions = {
                 longitude: "135.495257"
             }
         })
-        console.log(position.coords.latitude)
         commit("setRetaurants", res)
-    }
+    },
+
 };

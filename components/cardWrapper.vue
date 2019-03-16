@@ -1,20 +1,22 @@
 <template lang="pug">
-  section
-    Card(v-for="(restaurantData, restaurant_id) in cards_data" :key="`key-${restaurant_id}`" :restaurant_data="restaurantData")
+  .card-wrapper
+    .card(v-for="(restaurantData, restaurant_id) in cards_data" :key="`key-${restaurant_id}`" :style="{top:`${top_position}px`,left:`${left_position}px`}")
+      Card(:restaurant_data="restaurantData" :restaurant_id="restaurant_id", @x="getX", @y="getY")
 </template>
 
 <script>
 import Card from "~/components/card.vue"
+
 export default {
   components: {
     Card
   },
   data: function() {
     return {
-      x: null,
-      y: null,
       cards_data: [],
-      now_restrant_id: 0
+      now_restrant_id: 0,
+      top_position: 0,
+      left_position: 0
     }
   },
   computed: {
@@ -34,13 +36,38 @@ export default {
     deleteCard: function() {
       this.cards_data.shift()
       this.cards_data.push(this.restaurantsData[this.now_restrant_id])
-      this.now_restrant_id++;
+      this.now_restrant_id++
+    },
+    getX: function(x) {
+      this.left_position = x;
+      console.log(this.left_position)
+    },
+    getY: function(y) {
+      this.top_position = y;
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.card-wrapper {
+  position: relative;
+  .card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    &:nth-last-child(){
+      top: 0 !important;
+      left: 0 !important;
+    }
+  }
+}
+section{
+  position: absolute;
+  top:0;
+  left:0;
+}
 </style>
 

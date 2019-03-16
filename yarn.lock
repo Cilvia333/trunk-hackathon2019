@@ -592,6 +592,12 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@branu-jp/v-drag@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@branu-jp/v-drag/-/v-drag-0.1.0.tgz#bd8109a249e768dd3d3a3b1bfbf5892b384497e6"
+  dependencies:
+    vue "^2.5.16"
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
@@ -7597,7 +7603,7 @@ vue-touch@^2.0.0-beta.4:
     rollup-plugin-commonjs "^7.0.0"
     rollup-plugin-node-resolve "^2.0.0"
 
-vue@^2.5.17, vue@^2.5.22:
+vue@^2.5.16, vue@^2.5.17, vue@^2.5.22:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.9.tgz#415c1cc1a5ed00c8f0acdd0a948139d12b7ea6b3"
 
