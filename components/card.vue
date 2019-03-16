@@ -52,7 +52,7 @@ export default {
   border-radius: 12px;
   background: #fff;
   overflow-y: overlay;
-  transition: left 0s $bezier-ease-out;
+  transition: left 0s $bezier-ease-in;
 }
 
 .card[data-position="0"]{
@@ -61,13 +61,13 @@ export default {
 
 .card[data-position="0"][data-swiped="right"]{
   left:120%;
-  transition: left 1s $bezier-ease-out;
+  transition: left 0.1s $bezier-ease-in;
 
 }
 
 .card[data-position="0"][data-swiped="left"]{
   left:-120%;
-  transition: left 1s $bezier-ease-out;
+  transition: left 0.1s $bezier-ease-in;
 }
 
 .category {

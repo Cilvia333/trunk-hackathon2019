@@ -5,7 +5,9 @@
       img.umbrella(src="~/assets/imgs/umbrella.svg")
     .text 君の行く店はココだ !
   .cards
-    .cards-wrapper: CardWrapper(@updateRestaurant="setRestaurantLink")
+    .cards-wrapper
+      CardWrapper(@updateRestaurant="setRestaurantLink")
+      .text カードが無くなったぞ！
   a(:href="go_link")
       .go-button: .go-text Go!
 </template>
@@ -81,11 +83,23 @@ menu{
   height: 100vh;
   padding-top: 60px; /*menu-bar*/
   padding-bottom: (60px + 20px);
+
   .cards-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
     padding: 20px;
+
+    .text {
+      position: absolute;
+      display: block;
+      top: 0;
+      bottom: 0;
+      margin:auto;
+      text-align: center;
+      width: calc(100% - 40px);
+      height:min-content;
+    }
   }
 }
 
