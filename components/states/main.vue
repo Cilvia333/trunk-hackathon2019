@@ -5,8 +5,8 @@
       img.umbrella(src="~/assets/imgs/umbrella.svg")
     .text 君の行く店はココだ !
   .cards
-    .cards-wrapper: CardWrapper
-  nuxt-link(:to="go_link")
+    .cards-wrapper: CardWrapper(@updateRestaurant="setRestaurantLink")
+  a(:href="go_link")
       .go-button: .go-text Go!
 </template>
 
@@ -23,7 +23,9 @@ export default {
     }
   },
   methods: {
-    
+    setRestaurantLink(link) {
+      this.go_link = link
+    }
   }
 }
 </script>
