@@ -31,7 +31,7 @@ export default {
   ],
   methods: {
     NoticeAnimationEnd() {
-      this.$emit("finishAnimation")
+      this.$emit("finishAnimation",this.is_swiped)
     }
   }
 }
@@ -52,7 +52,7 @@ export default {
   border-radius: 12px;
   background: #fff;
   overflow-y: overlay;
-  transition: right 1s $bezier-ease-out, left 1s $bezier-ease-out;
+  transition: left 0s $bezier-ease-out;
 }
 
 .card[data-position="0"]{
@@ -60,11 +60,14 @@ export default {
 }
 
 .card[data-position="0"][data-swiped="right"]{
-  right:-100%;
+  left:120%;
+  transition: left 1s $bezier-ease-out;
+
 }
 
 .card[data-position="0"][data-swiped="left"]{
-  left:-100%;
+  left:-120%;
+  transition: left 1s $bezier-ease-out;
 }
 
 .category {

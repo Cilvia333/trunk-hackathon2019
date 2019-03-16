@@ -31,13 +31,15 @@ export default {
     }
   },
   methods: {
-    deleteCard() {
-      this.cards_data.shift()
-      this.cards_data.push(this.restaurantsData[this.now_restrant_id])
-      if(this.now_restrant_id+1 < this.restaurantsData.length){
-        this.now_restrant_id++
+    deleteCard(position) {
+      if(position !== "false"){
+        if(this.now_restrant_id+1 < this.restaurantsData.length){
+          this.cards_data.shift()
+          this.cards_data.push(this.restaurantsData[this.now_restrant_id])
+          this.now_restrant_id++
+        }
+        this.is_swiped = "false"
       }
-      this.is_swiped = "false"
     },
     onSwipe(ev) {
       if(ev == "right") {
