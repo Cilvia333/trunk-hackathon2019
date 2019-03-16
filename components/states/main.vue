@@ -9,7 +9,7 @@
       CardWrapper(@updateRestaurant="setRestaurantLink")
       .text カードが無くなったぞ！
   a(:href="go_link")
-      .go-button: .go-text Go!
+    .go-button: .go-text Go!
 </template>
 
 <script>

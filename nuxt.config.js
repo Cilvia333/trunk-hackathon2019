@@ -43,6 +43,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    'nuxt-fontawesome'
   ],
   /*
   ** Axios module configuration
@@ -61,5 +62,13 @@ export default {
    vendor: ['vue2-touch-events'],
     extend(config, ctx) {
     }
+  },
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas']
+      }
+    ]
   }
 }

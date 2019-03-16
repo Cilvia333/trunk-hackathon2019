@@ -2,17 +2,22 @@
 .card(:data-swiped="is_swiped" :data-position="restaurant_id" @transitionend="NoticeAnimationEnd")
   .card-wrapper
     .category
-      .category_prefecture {{restaurant_data.prefecture}}
-      .category_name {{restaurant_data.category_name}}
+      .category_name
+        .category_img(v-if="categoryImg(restaurant_data.category_name)")
+          img(:src="`../category_imgs/${categoryImg(restaurant_data.category_name)}.png`")
+        .category_name-text {{restaurant_data.category_name}}
+      .category_prefecture
+        .category_prefecture-text {{restaurant_data.prefecture}}
+        font-awesome-icon(icon="map-marker-alt").category_pref-icon
     restaurantImg(:imgs="restaurant_data.images")
     .restaurant
       .restaurant_name {{restaurant_data.name}}
       .restaurant_data_list
         .restaurant_data
-          .restaurant_data_icon
+          font-awesome-icon(icon="yen-sign").restaurant_data_icon 
           .restaurant_data_value {{restaurant_data.budget}}
         .restaurant_data
-          .restaurant_data_icon
+          font-awesome-icon(icon="clock").restaurant_data_icon
           .restaurant_data_value {{restaurant_data.time}}
       .catch {{restaurant_data.catch}}
 </template>
@@ -29,11 +34,19 @@ export default {
     "restaurant_id",
     "is_swiped"
   ],
-  methods: {
-    NoticeAnimationEnd() {
-      this.$emit("finishAnimation",this.is_swiped)
-    }
-  }
+  methods:{
+    categoryImg(category){
+      switch(category){
+        case "たこ焼き": return "takoyaki"; break;
+        case "お好み焼き": return "okonomiyaki"; break;
+        case "鹿せんべい": return "sikasenbei"; break;
+        case "茶そば": return "tyasoba"; break;
+        case "ラーメン": return "ramen"; break;
+        default: return null; break;
+      },
+      NoticeAnimationEnd() {
+        this.$emit("finishAnimation",this.is_swiped)
+      }
 }
 </script>
 
@@ -72,16 +85,76 @@ export default {
 
 .category {
   width: 100%;
-  height: 50px;
+  height: 46px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  padding: 0 12px;
-  @include noto-font(1.8rem);
-  .category_prefecture {
-    
+  padding: 0 8px;
+  @include noto-font(1.6rem);
+}
+.category_name {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  .category_img {
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
   }
+  .category_name-text {
+    margin-left: 4px;
+  }
+}
+.category_prefecture {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  .category_prefecture-text {
+    margin-right: 2px;
+  }
+  .category_pref-icon {
+    width: 24px;
+    height: 40px;
+    padding: 12px 0;
+  }
+}
+
+.restaurant {
+  width: 100%;
+  padding: 8px 12px;
+  .restaurant_name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+}
+.restaurant_data_list {
+  margin-bottom: 8px;
+  .restaurant_data {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    .restaurant_data_icon {
+      width: 15px;
+      height: 15px;
+      color: #333;
+    }
+    .restaurant_data_value {
+      margin-left: 8px;
+      font-size: 1.4rem;
+    }
+
+  }
+}
+.catch {
+
 }
 </style>
 
