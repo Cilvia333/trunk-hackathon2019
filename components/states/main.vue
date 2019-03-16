@@ -7,7 +7,7 @@
   .cards
     .cards-wrapper: CardWrapper
   nuxt-link(:to="go_link")
-      .go-button: .go-text Go!
+    .go-button: .go-text Go!
 </template>
 
 <script>
