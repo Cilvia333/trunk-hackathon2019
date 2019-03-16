@@ -34,8 +34,14 @@ export default {
     }
   },
   watch: {
-    restaurantsData() {
-      this.changeState("Main")
+    restaurantsData(val) {
+      console.log(val)
+      if(val != null) {
+        this.changeState("Main")
+      }
+      else{
+        this.changeState("Error")
+      }
     }
   },
   methods: {

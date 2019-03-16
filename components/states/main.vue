@@ -15,19 +15,12 @@ section
 </template>
 
 <script>
-import ImgCarousel from "~/components/imgCarousel.vue"
+import Card from "~/components/card.vue"
 
 export default {
   components: {
-      ImgCarousel
-  },
-  computed: {
-    restaurantData() {
-      if(this.$store.state.restaurants != null){
-        return this.$store.state.restaurants[0]
-      }
-    }
-  },
+    Card
+  }
 }
 </script>
 
