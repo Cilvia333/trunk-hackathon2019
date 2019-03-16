@@ -1,7 +1,8 @@
 <template lang="pug">
 section
   menu
-    img.umbrella()
+    img.umbrella(src="~/assets/imgs/umbrella.svg")
+    img.arrow(src="~/assets/imgs/umbrella.svg")
   main
     h1.category_name {{category_name}}
     h2.restaurant {{restaurant}}
