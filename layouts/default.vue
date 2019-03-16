@@ -48,4 +48,12 @@ a:link,a:visited {
 :focus {
   outline: none;
 }
+
+.v-enter-active, .v-leave-active {
+  transition: opacity .5s;
+  opacity: 1;
+}
+.v-enter, .v-leave-to {
+  opacity: 0
+}
 </style>

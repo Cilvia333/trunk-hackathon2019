@@ -1,12 +1,9 @@
 <template lang="pug">
   div
-    div(v-if = "nowState === 'Main'")
-      Main
-    div(v-else-if = "nowState==='Error'")
-      Error
-    div(v-else-if = "nowState==='Loading'")
-      transition
-        Loading
+    Main(v-if = "nowState === 'Main'")
+    Error(v-if = "nowState ==='Error'")
+    transition
+      Loading(v-show = "nowState ==='Loading'")
 </template>
 
 <script>

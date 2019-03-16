@@ -25,7 +25,7 @@ export const actions = {
             longitude: position.coords.longitude
         })
         */
-        const res = await this.$axios.$get('https://21a64fa6.ngrok.io/search',{
+        const res = await this.$axios.$get('https://ec293549.ngrok.io/search',{
             params :{
                 latitude: "34.679193",
                 longitude: "135.495257"

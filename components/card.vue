@@ -1,22 +1,28 @@
 <template lang="pug">
-section
-  .container
-  .category
-    .category_prefecture {{restaurant_data.prefecture}}
-    .category_name {{restaurant_data.category_name}}
-  .restaurant {{restaurant_data.name}}
-  ImgCarousel(:imgs="restaurant_data.images")
-  h3.value {{restaurant_data.budget}}
-  h3.catch {{restaurant_data.catch}}
-  a.link(:src="restaurant_data.link")
+.card
+  .card-wrapper
+    .category
+      .category_prefecture {{restaurant_data.prefecture}}
+      .category_name {{restaurant_data.category_name}}
+    restaurantImg(:imgs="restaurant_data.images")
+    .restaurant
+      .restaurant_name {{restaurant_data.name}}
+      .restaurant_data_list
+        .restaurant_data
+          .restaurant_data_icon
+          .restaurant_data_value {{restaurant_data.budget}}
+        .restaurant_data
+          .restaurant_data_icon
+          .restaurant_data_value {{restaurant_data.time}}
+      .catch {{restaurant_data.catch}}
 </template>
 
 <script>
-import ImgCarousel from "~/components/imgCarousel.vue"
+import restaurantImg from "~/components/restaurantImg.vue"
 
 export default {
   components: {
-    ImgCarousel
+    restaurantImg
   },
   props: {
     restaurant_data: {
@@ -31,8 +37,30 @@ export default {
 @import "~/assets/style/variables.scss";
 @import "~/assets/style/mixin.scss";
 
-.container *{
-  text-align: center;
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 6px solid $theme-orange;
+  border: 6px solid $theme-gradient;
+  border-radius: 12px;
+  background: #fff;
+  overflow-y: overlay;
+}
+.category {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  @include noto-font(1.8rem);
+  .category_prefecture {
+    
+  }
 }
 </style>
 
