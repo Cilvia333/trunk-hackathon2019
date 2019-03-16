@@ -1,5 +1,5 @@
 <template lang="pug">
-.card
+.card(:data-swiped="is_swiped" :data-position="restaurant_id" @transitionend="NoticeAnimationEnd")
   .card-wrapper
     .category
       .category_prefecture {{restaurant_data.prefecture}}
@@ -24,10 +24,14 @@ export default {
   components: {
     restaurantImg
   },
-  props: {
-    restaurant_data: {
-      type: Object,
-      default: null, 
+  props: [
+    "restaurant_data",
+    "restaurant_id",
+    "is_swiped"
+  ],
+  methods: {
+    NoticeAnimationEnd() {
+      this.$emit("finishAnimation")
     }
   }
 }
@@ -48,7 +52,21 @@ export default {
   border-radius: 12px;
   background: #fff;
   overflow-y: overlay;
+  transition: right 1s $bezier-ease-out, left 1s $bezier-ease-out;
 }
+
+.card[data-position="0"]{
+  z-index: 2;
+}
+
+.card[data-position="0"][data-swiped="right"]{
+  right:-100%;
+}
+
+.card[data-position="0"][data-swiped="left"]{
+  left:-100%;
+}
+
 .category {
   width: 100%;
   height: 50px;

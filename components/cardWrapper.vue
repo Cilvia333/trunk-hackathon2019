@@ -1,20 +1,20 @@
 <template lang="pug">
   .card-wrapper-child
-    Card(v-for="(restaurantData, restaurant_id) in cards_data" :key="`rest-${restaurant_id}`" :restaurant_data="restaurantData")
+    Card(v-for="(restaurantData, restaurant_id) in cards_data" :key="`rest-${restaurant_id}`" :restaurant_data="restaurantData" :restaurant_id="restaurant_id" :is_swiped="is_swiped" @finishAnimation="deleteCard" v-touch:swipe="onSwipe")
 </template>
 
 <script>
 import Card from "~/components/card.vue"
+
 export default {
   components: {
     Card
   },
   data: function() {
     return {
-      x: null,
-      y: null,
       cards_data: [],
-      now_restrant_id: 0
+      now_restrant_id: 0,
+      is_swiped: "false"
     }
   },
   computed: {
@@ -31,10 +31,22 @@ export default {
     }
   },
   methods: {
-    deleteCard: function() {
+    deleteCard() {
       this.cards_data.shift()
       this.cards_data.push(this.restaurantsData[this.now_restrant_id])
-      this.now_restrant_id++;
+      if(this.now_restrant_id+1 < this.restaurantsData.length){
+        this.now_restrant_id++
+      }
+      this.is_swiped = "false"
+    },
+    onSwipe(ev) {
+      if(ev == "right") {
+        this.is_swiped = "right"
+      }
+      else if(ev == "left") {
+        this.is_swiped = "left"
+      }
+      console.log(ev)
     }
   }
 }

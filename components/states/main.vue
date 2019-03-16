@@ -22,10 +22,8 @@ export default {
       go_link:""
     }
   },
-  restaurantLinkData() {
-    if(this.$store.state.restaurants != null){
-      return this.$store.state.restaurants
-    }
+  methods: {
+    
   }
 }
 </script>
