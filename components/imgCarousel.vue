@@ -1,7 +1,7 @@
 <template lang="pug">
 section.container
   Carousel(:perPageCustom="[[768, 1], [1024, 2]]")
-    Slide(v-for="(img,img_id) in images" :key="`key-${img_id}`")
+    Slide(v-for="(img,img_id) in imgs" :key="`key-${img_id}`")
       img(:src="img" )
 
 </template>
@@ -15,11 +15,10 @@ export default {
     Carousel,
     Slide
   },
-  computed: {
-    images() {
-      if(this.$store.state.restaurants != null){
-        return this.$store.state.restaurants[0].images
-      }
+  props: {
+    imgs: {
+      type: Array,
+      default: null, 
     }
   }
 }

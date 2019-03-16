@@ -1,30 +1,29 @@
 <template lang="pug">
 section
-    .container
-    .category
-        .category_prefecture {{restaurantData.prefecture}}
-        .category_name {{restaurantData.category_name}}
-    .restaurant {{restaurantData.name}}
-    ImgCarousel
-    h3.value {{restaurantData.budget}}
-    h3.catch {{restaurantData.catch}}
-    a.link(:src="restaurantData.link")
+  .container
+  .category
+    .category_prefecture {{restaurant_data.prefecture}}
+    .category_name {{restaurant_data.category_name}}
+  .restaurant {{restaurant_data.name}}
+  ImgCarousel(:imgs="restaurant_data.images")
+  h3.value {{restaurant_data.budget}}
+  h3.catch {{restaurant_data.catch}}
+  a.link(:src="restaurant_data.link")
 </template>
 
 <script>
 import ImgCarousel from "~/components/imgCarousel.vue"
 
 export default {
-    components: {
-        ImgCarousel
-    },
-    computed: {
-        restaurantData() {
-            if(this.$store.state.restaurants != null){
-                return this.$store.state.restaurants[0]
-            }
-        }
-    },
+  components: {
+    ImgCarousel
+  },
+  props: {
+    restaurant_data: {
+      type: Object,
+      default: null, 
+    }
+  }
 }
 </script>
 
@@ -33,7 +32,7 @@ export default {
 @import "~/assets/style/mixin.scss";
 
 .container *{
-    text-align: center;
+  text-align: center;
 }
 </style>
 
