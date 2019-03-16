@@ -29,12 +29,12 @@ export default {
     navigator.geolocation.getCurrentPosition(this.loadStoreData)
   },
   computed: {
-    storeData() {
-      return this.$store.state.stores
+    restaurantsData() {
+      return this.$store.state.restaurants
     }
   },
   watch: {
-    storeData() {
+    restaurantsData() {
       this.changeState("Main")
     }
   },

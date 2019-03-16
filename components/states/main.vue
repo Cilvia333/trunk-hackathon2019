@@ -2,10 +2,12 @@
 section
   menu
     img.umbrella(src="~/assets/imgs/umbrella.svg")
-    img.arrow(src="~/assets/imgs/umbrella.svg")
+    .text 君の行く店はココだ！
   main
-    h1.category_name {{restaurantData.category_name}}
-    h2.restaurant {{restaurantData.name}}
+    .category
+      .category_
+      .category_name {{restaurantData.category_name}}
+    .restaurant {{restaurantData.name}}
     ImgCarousel
     h3.value {{restaurantData.budget}}
     h3.catch {{restaurantData.catch}}
@@ -36,6 +38,19 @@ export default {
 menu{
   width: 100%;
   height: 80px;
-  background: $theme-orange;
+  background: $theme-gradient;
+  padding-left: 12px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  .umbrella{
+    height: 80px;
+  }
+  .text{
+    padding-top: 12px;
+    padding-left: 18px;
+    @include noto-font(2.4rem,#fff);
+    font-weight: 700;
+  }
 }
 </style>
