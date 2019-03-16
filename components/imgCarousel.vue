@@ -1,6 +1,6 @@
 <template lang="pug">
 section.container
-  Carousel(:perPage="1")
+  Carousel(:perPageCustom="[[768, 1], [1024, 2]]")
     Slide(v-for="(img,img_id) in images" :key="`key-${img_id}`")
       img(:src="img" )
 
