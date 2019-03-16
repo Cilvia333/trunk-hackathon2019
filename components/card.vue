@@ -1,8 +1,10 @@
 <template lang="pug">
 section
     .container
-        h1.category_name {{restaurantData.category_name}}
-        h2.restaurant {{restaurantData.name}}
+        .category
+            .category_
+            .category_name {{restaurantData.category_name}}
+        .restaurant {{restaurantData.name}}
         ImgCarousel
         h3.value {{restaurantData.budget}}
         h3.catch {{restaurantData.catch}}
