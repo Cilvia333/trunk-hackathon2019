@@ -23,6 +23,9 @@ body {
   width: 100%;
   height: 100%;
   @include noto-font(1.5rem);
+  font-feature-settings: "pkna";
+  letter-spacing: 0.1rem;
+  line-height: 1.6;
 }
 
 .container {
