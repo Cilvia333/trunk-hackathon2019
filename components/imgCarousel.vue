@@ -26,5 +26,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~/assets/style/variables.scss";
+@import "~/assets/style/mixin.scss";
 
+img{
+  text-align: center;
+}
 </style>
