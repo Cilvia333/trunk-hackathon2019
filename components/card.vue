@@ -1,11 +1,11 @@
 <template lang="pug">
-section(:data-front="restaurant_id")
+.card-hoge(:data-front="restaurant_id")
   .container
   .category
     .category_prefecture {{restaurant_data.prefecture}}
     .category_name {{restaurant_data.category_name}}
   .restaurant {{restaurant_data.name}}
-  ImgCarousel(:imgs="restaurant_data.images")
+  //- ImgCarousel(:imgs="restaurant_data.images")
   h3.value {{restaurant_data.budget}}
   h3.catch {{restaurant_data.catch}}
   a.link(:src="restaurant_data.link") {{restaurant_id}}
@@ -39,14 +39,16 @@ export default {
   },
   methods: {
     setInitialState: function() {
-      var el = document.getElementsByTagName("section")[0];
-      el.addEventListener("touchstart",this.touchstart)
+      // var el = document.getElementsByTagName("section")[0];
+      
+      // el.addEventListener("touchstart",this.touchstart)
 
       if( (this.x !== null) && (this.y !== null) ) return
 
       this.x = (window.innerWidth / 2) - (this.$el.clientWidth / 2)
       this.y = (window.innerHeight / 2) - (this.$el.clientHeight / 2)
     },
+    
     touchstart: function(e) {
       //カーソルの初期位置を控えておく
       this.cursorOffset.x = e.changedTouches[0].pageX + this.x
@@ -83,14 +85,15 @@ export default {
 @import "~/assets/style/variables.scss";
 @import "~/assets/style/mixin.scss";
 
-section{
-  width:80vw;
-  height:80vw;
-  top:50%;
-  left:50%;
-  margin:auto;
-  background: $black;
-}
+
+// section{
+//   width:80vw;
+//   height:80vw;
+//   top:50%;
+//   left:50%;
+//   margin:auto;
+//   background: $black;
+// }
 
 section [data-front='0']{
   z-index:10;
