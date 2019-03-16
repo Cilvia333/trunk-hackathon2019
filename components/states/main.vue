@@ -3,12 +3,12 @@ section
   menu
     img.umbrella()
   main
-    h1.category_name {{category_name}}
-    h2.restaurant {{restaurant}}
+    h1.category_name {{restaurantData.category_name}}
+    h2.restaurant {{restaurantData.name}}
     ImgCarousel
-    h3.value {{value}}
-    h3.time {{time}}
-    a.link(:src="link")
+    h3.value {{restaurantData.budget}}
+    h3.catch {{restaurantData.catch}}
+    a.link(:src="restaurantData.link")
 </template>
 
 <script>
@@ -19,29 +19,9 @@ export default {
       ImgCarousel
   },
   computed: {
-    category_name() {
-      if(this.$store.stores != null){
-        return this.$store.stores[0].category_name
-      }
-    },
-    restaurant() {
-      if(this.$store.stores != null){
-        return this.$store.stores[0].restaurant
-      }
-    },
-    value() {
-      if(this.$store.stores != null){
-        return this.$store.stores[0].value
-      }
-    },
-    time() {
-      if(this.$store.stores != null){
-        return this.$store.stores[0].time
-      }
-    },
-    link() {
-      if(this.$store.stores != null){
-        return this.$store.stores[0].link
+    restaurantData() {
+      if(this.$store.state.restaurants != null){
+        return this.$store.state.restaurants[0]
       }
     }
   },

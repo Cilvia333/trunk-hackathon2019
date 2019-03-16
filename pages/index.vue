@@ -30,12 +30,11 @@ export default {
   },
   computed: {
     storeData() {
-      return this.$store.stores
+      return this.$store.state.stores
     }
   },
   watch: {
-    storeData(val) {
-      console.log(val)
+    storeData() {
       this.changeState("Main")
     }
   },
@@ -44,7 +43,8 @@ export default {
       await this.$store.dispatch("getStoresFromGPS",position)
     },
     changeState(state){
-      nowState = state
+      this.nowState = state
+      console.log(this.nowState)
     }
   }
 }

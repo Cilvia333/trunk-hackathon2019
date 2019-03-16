@@ -2,14 +2,13 @@ import axios from 'axios'
 
 export const state = () => {
     return {
-        stores: []
+        restaurants: []
     }
 };
 
 export const mutations = {
-    setStores (state, stores) {
-        state.stores = stores
-        console.log(state.stores)
+    setStores (state, restaurants) {
+        state.restaurants = restaurants
     }
 };
 
@@ -26,6 +25,6 @@ export const actions = {
                 longitude: position.coords.longitude
             }
         })
-        commit("setStores", res)
+        commit("setRetaurants", res)
     }
 };
