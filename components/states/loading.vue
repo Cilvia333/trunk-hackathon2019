@@ -1,11 +1,12 @@
 <template lang="pug">
-.loading
-  .loading-wrapper
-    .loading-imgs
-      img.loading-img.loading-img-1(src="~/assets/imgs/loading.svg")
-      img.loading-img.loading-img-2(src="~/assets/imgs/loading.svg")
-      img.loading-img.loading-img-3(src="~/assets/imgs/loading.svg")
-    .loading-text: span(v-for="letter in loading") {{letter}}
+div
+  .loading
+    .loading-wrapper
+      .loading-imgs
+        img.loading-img.loading-img-1(src="~/assets/imgs/loading.svg")
+        img.loading-img.loading-img-2(src="~/assets/imgs/loading.svg")
+        img.loading-img.loading-img-3(src="~/assets/imgs/loading.svg")
+      .loading-text: span(v-for="letter in loading") {{letter}}
 </template>
 
 <script>
@@ -23,10 +24,12 @@ export default {
 @import "~/assets/style/mixin.scss";
 
 .loading{
+  display: block;
   width: 100vw;
-  height:100vh;
+  height: 100vh;
   background: $theme-orange;
   background: $theme-gradient;
+  opacity: 1;
 }
 .loading-wrapper{
   position:absolute;
@@ -38,6 +41,7 @@ export default {
   margin:auto;
   width: min-content;
   height: min-content;
+  opacity: 1;
 }
 .loading-imgs {
   position: relative;

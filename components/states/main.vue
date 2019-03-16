@@ -1,9 +1,12 @@
 <template lang="pug">
-section
+.main
   menu
-    img.umbrella(src="~/assets/imgs/umbrella.svg")
-    .text 君の行く店はココだ！
+    .reload(@click="")
+      img.umbrella(src="~/assets/imgs/umbrella.svg")
+    .text 君の行く店はココだ !
   main
+    nuxt-link(:to="go_link")
+      .go-button: .go-text Go!
     CardWrapper
 </template>
 
@@ -13,6 +16,16 @@ import CardWrapper from "~/components/cardWrapper.vue"
 export default {
   components: {
     CardWrapper
+  },
+  data(){
+    return{
+      go_link:""
+    }
+  },
+  restaurantLinkData() {
+    if(this.$store.state.restaurants != null){
+      return this.$store.state.restaurants
+    }
   }
 }
 </script>
@@ -21,22 +34,93 @@ export default {
 @import "~/assets/style/variables.scss";
 @import "~/assets/style/mixin.scss";
 
+.main {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 menu{
   width: 100%;
-  height: 80px;
+  height: 60px;
+  background: $theme-orange;
   background: $theme-gradient;
   padding-left: 12px;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  .umbrella{
-    height: 80px;
+  justify-content: center;
+  position: relative;
+  .reload{
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: 60px;
+    .umbrella{
+      display: block;
+      margin-left: 8px;
+      width: 60px;
+      height: 60px;
+    }
   }
+
   .text{
-    padding-top: 12px;
-    padding-left: 18px;
-    @include noto-font(2.4rem,#fff);
+    padding-top: 4px;
+    @include noto-font(2rem,#fff);
     font-weight: 700;
+  }
+}
+
+.go-button {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: calc(100vw - 40px);
+  height: 60px;
+  background: $theme-orange;
+  background: $theme-gradient;
+  border-radius: 12px;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .3s $bezier-ease-out;
+  filter: brightness(100%);
+  &:active{
+    filter: brightness(130%);
+  }
+  .go-text {
+    @include noto-font(2.2rem,#fff);
+  }
+}
+
+
+@media (max-width:640px){
+  menu .reload .umbrella{
+    margin-left: 4px;
+  }
+}
+@media (max-width:340px){
+  /*340px以下で適用する内容*/
+  menu{
+    .reload {
+      height: 60px;
+      .umbrella{
+        margin-top: 10px;
+        width: 50px;
+        height: 50px;
+        margin-left: 2px;
+      }
+    }
+    .text{
+      padding-top: 8px;
+      font-size: 1.8rem;
+    }
   }
 }
 </style>
