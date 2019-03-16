@@ -29,13 +29,19 @@ export default {
     navigator.geolocation.getCurrentPosition(this.loadStoreData)
   },
   computed: {
-    storeData() {
-      return this.$store.state.stores
+    restaurantsData() {
+      return this.$store.state.restaurants
     }
   },
   watch: {
-    storeData() {
-      this.changeState("Main")
+    restaurantsData(val) {
+      console.log(val)
+      if(val != null) {
+        this.changeState("Main")
+      }
+      else{
+        this.changeState("Error")
+      }
     }
   },
   methods: {
