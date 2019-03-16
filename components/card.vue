@@ -55,19 +55,15 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  border-left: 6px solid $theme-orange;
-  border-right: 6px solid $theme-pink;
+  padding: 6px;
+  background: $theme-gradient;
   border-radius: 12px;
-  background: #fff;
   overflow-y: overlay;
-  &:before{
-    content: "";
-    display: block;
-    height: 1px;
+  .card-wrapper {
     width: 100%;
-    background: -webkit-gradient(linear, left top, right bottom, from($theme-orange), to($theme-pink));
-    background: -moz-linear-gradient(left, $theme-orange, $theme-pink);
-    background: linear-gradient(left, $theme-orange, $theme-pink);
+    height: 100%;
+    border-radius: 6px;
+    background: #fff;
   }
 }
 .category {
