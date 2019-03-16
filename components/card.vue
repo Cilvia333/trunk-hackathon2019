@@ -43,10 +43,12 @@ export default {
         case "茶そば": return "tyasoba"; break;
         case "ラーメン": return "ramen"; break;
         default: return null; break;
-      },
-      NoticeAnimationEnd() {
-        this.$emit("finishAnimation",this.is_swiped)
       }
+    },
+    NoticeAnimationEnd() {
+      this.$emit("finishAnimation",this.is_swiped)
+    }
+  }
 }
 </script>
 
