@@ -33,7 +33,7 @@ export default {
   methods:{
     categoryImg(category){
       switch(category){
-        case "たこ焼き": return "takoyaki"; break;
+        case "たこやき": return "takoyaki"; break;
         case "お好み焼き": return "okonomiyaki"; break;
         case "鹿せんべい": return "sikasenbei"; break;
         case "茶そば": return "tyasoba"; break;
@@ -55,11 +55,20 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 6px solid $theme-orange;
-  border: 6px solid $theme-gradient;
+  border-left: 6px solid $theme-orange;
+  border-right: 6px solid $theme-pink;
   border-radius: 12px;
   background: #fff;
   overflow-y: overlay;
+  &:before{
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: -webkit-gradient(linear, left top, right bottom, from($theme-orange), to($theme-pink));
+    background: -moz-linear-gradient(left, $theme-orange, $theme-pink);
+    background: linear-gradient(left, $theme-orange, $theme-pink);
+  }
 }
 .category {
   width: 100%;
