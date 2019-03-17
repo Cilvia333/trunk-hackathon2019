@@ -1,68 +1,58 @@
-<template>
-  <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        trunk-hackathon2019
-      </h1>
-      <h2 class="subtitle">
-        We&#39;ll won a 1st prize and a million yen!!!!!!!!!!
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
-      </div>
-    </div>
-  </section>
+<template lang="pug">
+  div
+    Main(v-if = "nowState === 'Main'")
+    Error(v-if = "nowState ==='Error'")
+    transition
+      Loading(v-show = "nowState ==='Loading'")
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Main from "~/components/states/main.vue"
+import Error from "~/components/states/error.vue"
+import Loading from "~/components/states/loading.vue"
 
 export default {
   components: {
-    Logo
+    Main,
+    Error,
+    Loading
+  },
+  data: function() {
+    return {
+      nowState: "Loading"
+    }
+  },
+  async mounted() {
+    navigator.geolocation.getCurrentPosition(this.loadStoreData)
+  },
+  computed: {
+    restaurantsData() {
+      return this.$store.state.restaurants
+    }
+  },
+  watch: {
+    restaurantsData(val) {
+      console.log(val)
+      if(val != null) {
+        this.changeState("Main")
+      }
+      else{
+        this.changeState("Error")
+      }
+    }
+  },
+  methods: {
+    async loadStoreData(position) {
+      await this.$store.dispatch("getStoresFromGPS",position)
+    },
+    changeState(state){
+      this.nowState = state
+      console.log(this.nowState)
+    }
   }
 }
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style lang="scss" scoped>
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>

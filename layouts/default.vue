@@ -4,52 +4,56 @@
   </div>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+<style lang="scss">
+@import "~/assets/style/normalize.scss";
+@import "~/assets/style/variables.scss";
+@import "~/assets/style/mixin.scss";
+
+html{
+  font-family: $noto-font, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 62.5%;
+  color: #000;
   box-sizing: border-box;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  @include noto-font(1.5rem);
+  font-feature-settings: "pkna";
+  letter-spacing: 0.1rem;
+  line-height: 1.6;
 }
 
-*,
-*:before,
-*:after {
+.container {
+  width: calc(100% - 120px);
+  margin: auto;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+*, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
 }
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
+a:link,a:visited {
+  color: #000;
   text-decoration: none;
-  padding: 10px 30px;
+}
+:focus {
+  outline: none;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.v-enter-active, .v-leave-active {
+  transition: opacity .5s;
+  opacity: 1;
 }
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.v-enter, .v-leave-to {
+  opacity: 0
 }
 </style>

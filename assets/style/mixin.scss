@@ -1,0 +1,5 @@
+@mixin noto-font($size:1.6rem, $color:#333) {
+  font-family: $noto-font;
+  font-size: $size;
+  color: $color;
+}

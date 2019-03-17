@@ -11,9 +11,14 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.15",
+    "@fortawesome/free-regular-svg-icons": "^5.7.2",
+    "@fortawesome/free-solid-svg-icons": "^5.7.2",
+    "@fortawesome/vue-fontawesome": "^0.1.5",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^2.6.0",
-    "nuxt": "^2.4.0"
+    "nuxt": "^2.4.0",
+    "nuxt-fontawesome": "^0.4.0"
   },
   "devDependencies": {
     "firebase": "^5.8.6",
@@ -23,6 +28,8 @@
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
     "pug-plain-loader": "^1.0.0",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "vue-carousel": "^0.18.0-alpha",
+    "vue-touch": "^2.0.0-beta.4"
   }
 }
