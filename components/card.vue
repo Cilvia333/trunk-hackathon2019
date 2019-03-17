@@ -1,6 +1,6 @@
 <template lang="pug">
 .card(:data-swiped="is_swiped" :data-position="restaurant_id" @transitionend="NoticeAnimationEnd")
-  .card-wrapper
+  .card-wrapper(@scroll="Onscroll")
     .category
       .category_name
         .category_img(v-if="categoryImg(restaurant_data.category_name)")
@@ -35,6 +35,19 @@ export default {
     "restaurant_id",
     "is_swiped"
   ],
+  data() {
+    return {
+      is_scroll_end: false,
+      scroll_end_height: 0
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      var el = document.getElementsByClassName("card-wrapper")[0]
+      this.scroll_end_height = el.height - el.clientHeight - 5
+
+    }) 
+  },
   methods:{
     categoryImg(category){
       switch(category){
@@ -51,6 +64,11 @@ export default {
     },
     resetImgId(){
       this.$refs.restaurantImg.resetImgId();
+    },
+    Onscroll(e) {
+      if(e.target.scrollTop >= this.scroll_end_height){
+        console.log("hoge")
+      }
     }
   }
 }
