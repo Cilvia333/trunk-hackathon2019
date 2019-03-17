@@ -20,6 +20,7 @@
           font-awesome-icon(icon="clock").restaurant_data_icon
           .restaurant_data_value {{restaurant_data.time}}
       .catch {{restaurant_data.catch}}
+
 </template>
 
 <script>
@@ -63,7 +64,7 @@ export default {
     width: 100%;
     height: 100%;
     border-radius: 6px;
-    background: #fff;
+    background: #ffffff;
   }
 }
 .category {
