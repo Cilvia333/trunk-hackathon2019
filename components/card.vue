@@ -8,7 +8,7 @@
         .category_name-text {{restaurant_data.category_name}}
       .category_prefecture
         .category_prefecture-text {{restaurant_data.prefecture}}
-        font-awesome-icon(icon="map-marker-alt").category_pref-icon
+        font-awesome-icon(icon="map-marker-alt" v-if="restaurant_data.prefecture").category_pref-icon
     restaurantImg(:imgs="restaurant_data.images")
     .restaurant
       .restaurant_name {{restaurant_data.name}}
@@ -66,13 +66,13 @@ export default {
   padding: 6px;
   background: $theme-gradient;
   border-radius: 12px;
-  overflow-y: overlay;
   transition: left 0s $bezier-ease-in;
   .card-wrapper {
     width: 100%;
     height: 100%;
     border-radius: 6px;
-    background: #ffffff;
+    background: #fff;
+    overflow-y: overlay;
   }
 }
 
