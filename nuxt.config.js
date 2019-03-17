@@ -33,6 +33,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '@/plugins/vue2TouchEvents', ssr: false}
   ],
 
   /*
@@ -58,6 +59,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
+   vendor: ['vue2-touch-events'],
     extend(config, ctx) {
     }
   },
