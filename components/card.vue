@@ -113,7 +113,7 @@ export default {
 }
 
 .card[data-position="1"][data-swiped="left"]{
-  transition: transform 0.1s $bezier-ease-in;
+  transition: transform 0.3s $bezier-ease-out;
   transform:scale(1.0);
 }
 
