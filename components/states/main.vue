@@ -15,7 +15,7 @@
   div(v-if="is_link_active===false")
     .reload-botton(@click="reloadPage")
       .go-button()
-        .go-text ほかのを見つける
+        .go-text More and More!!!
 </template>
 
 <script>
