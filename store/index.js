@@ -31,8 +31,8 @@ export const actions = {
         */
         const res = await this.$axios.$get('https://r3n3mmylth.execute-api.ap-northeast-1.amazonaws.com/dev/' + state.address,{
             params :{
-                latitude: "34.679193",
-                longitude: "135.495257"
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
             }
         })
         console.log(position.coords.latitude)
