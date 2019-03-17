@@ -9,7 +9,7 @@
       .category_prefecture
         .category_prefecture-text {{restaurant_data.prefecture}}
         font-awesome-icon(icon="map-marker-alt" v-if="restaurant_data.prefecture").category_pref-icon
-    restaurantImg(:imgs="restaurant_data.images")
+    restaurantImg(:imgs="restaurant_data.images" ref="restaurantImg")
     .restaurant
       .restaurant_name {{restaurant_data.name}}
       .restaurant_data_list
@@ -48,6 +48,9 @@ export default {
     },
     NoticeAnimationEnd() {
       this.$emit("finishAnimation",this.is_swiped)
+    },
+    resetImgId(){
+      this.$refs.restaurantImg.resetImgId();
     }
   }
 }

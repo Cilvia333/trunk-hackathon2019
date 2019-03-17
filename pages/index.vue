@@ -3,7 +3,7 @@
     Main(v-if = "nowState === 'Main'" @reload="reloadPage")
     Error(v-if = "nowState ==='Error'" v-bind:errorCode="errorCode")
     transition
-      Loading(v-show = "nowState ==='Loading'")
+      Loading(v-if = "nowState ==='Loading'")
 </template>
 
 <script>
@@ -20,7 +20,8 @@ export default {
   data: function() {
     return {
       nowState: "Loading",
-      errorCode: null
+      errorCode: null,
+      logo:true
     }
   },
   async mounted() {

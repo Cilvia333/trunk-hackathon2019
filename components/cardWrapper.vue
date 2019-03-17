@@ -1,6 +1,6 @@
 <template lang="pug">
   .card-wrapper-child
-    Card(v-for="(restaurantData, restaurant_id) in cards_data" :key="`rest-${restaurant_id}`" :restaurant_data="restaurantData" :restaurant_id="restaurant_id" :is_swiped="is_swiped" @finishAnimation="deleteCard" v-touch:swipe="onSwipe")
+    Card(v-for="(restaurantData, restaurant_id) in cards_data" :key="`rest-${restaurant_id}`" :restaurant_data="restaurantData" :restaurant_id="restaurant_id" :is_swiped="is_swiped" @finishAnimation="deleteCard" v-touch:swipe="onSwipe" ref="card")
 </template>
 
 <script>
@@ -45,6 +45,7 @@ export default {
         else {
           this.$emit("updateRestaurant",this.cards_data[0].link)
         }
+        this.$refs.card[0].resetImgId();
         this.is_swiped = "false"
       }
     },
