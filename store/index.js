@@ -29,7 +29,7 @@ export const actions = {
             longitude: position.coords.longitude
         })
         */
-        const res = await this.$axios.$get('https://ec293549.ngrok.io/' + state.address,{
+        const res = await this.$axios.$get('https://r3n3mmylth.execute-api.ap-northeast-1.amazonaws.com/dev/' + state.address,{
             params :{
                 latitude: "34.679193",
                 longitude: "135.495257"
