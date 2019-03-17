@@ -38,10 +38,11 @@ export default {
   ],
   data() {
     return {
-      is_scroll_end: true
+      is_scroll_end: false
     }
   },
   mounted() {
+    this.initDropshadow()
   },
   methods:{
     categoryImg(category){
@@ -59,12 +60,24 @@ export default {
     },
     resetImgId(){
       this.$refs.restaurantImg.resetImgId();
-      this.is_scroll_end = true
+      this.initDropshadow()
     },
     Onscroll(e) {
       var el = document.getElementsByClassName("card-wrapper")[0]
       var scroll_end_height = el.scrollHeight - el.clientHeight
       if(e.target.scrollTop >= scroll_end_height-2){
+        this.is_scroll_end = false
+      }
+      else{
+        this.is_scroll_end = true
+      }
+    },
+    initDropshadow(){
+      var el = document.getElementsByClassName("card-wrapper")[1]
+      var scroll_end_height = el.scrollHeight - el.clientHeight
+      console.log(scroll_end_height)
+      console.log("hoge" + this.restaurant_id)
+      if(0 >= scroll_end_height){
         this.is_scroll_end = false
       }
       else{
@@ -109,6 +122,7 @@ export default {
 }
 
 .card[data-position="1"]{
+  z-index: 1;
   transform:scale(0.8);
 }
 

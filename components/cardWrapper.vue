@@ -45,13 +45,14 @@ export default {
         else {
           this.$emit("updateRestaurant",this.cards_data[0].link)
         }
-        this.$refs.card[0].resetImgId();
         this.is_swiped = "false"
+        this.$refs.card[0].resetImgId();
       }
     },
     onSwipe(ev) {
       if(ev == "left") {
         this.is_swiped = "left"
+        //this.$refs.card[1].initDropshadow();
       }
     }
   }
