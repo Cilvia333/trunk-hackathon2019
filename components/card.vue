@@ -83,12 +83,20 @@ export default {
 .card[data-position="0"][data-swiped="right"]{
   left:120%;
   transition: left 0.1s $bezier-ease-in;
-
 }
 
 .card[data-position="0"][data-swiped="left"]{
   left:-120%;
   transition: left 0.1s $bezier-ease-in;
+}
+
+.card[data-position="1"]{
+  transform:scale(0.8);
+}
+
+.card[data-position="1"][data-swiped="left"]{
+  transition: transform 0.1s $bezier-ease-in;
+  transform:scale(1.0);
 }
 
 .category {

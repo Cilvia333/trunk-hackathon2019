@@ -16,9 +16,9 @@ export default {
     nextImg(){
       if(this.imgs.length == 1){
         // これ以上画像はありません
-      }else if(this.now_image_id+1 > this.imgs.length){
+      }else if(this.now_image_id+1 >= this.imgs.length){
         this.now_image_id = 0;
-      }else if(this.now_image_id+1 < this.imgs.length){
+      }else if(this.now_image_id < this.imgs.length){
         this.now_image_id++;
       }
     }
