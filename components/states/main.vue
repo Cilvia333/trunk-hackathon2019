@@ -7,7 +7,7 @@
   .cards
     .cards-wrapper
       CardWrapper(@updateRestaurant="setRestaurantLink")
-      .text カードが無くなったぞ！
+      .text カードが無くなってしまった......
   div(v-if="is_link_active===true")
     a(:href="go_link")
       .go-button()

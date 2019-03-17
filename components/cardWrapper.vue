@@ -53,7 +53,6 @@ export default {
       if(ev == "left") {
         this.is_swiped = "left"
       }
-      console.log(ev)
     }
   }
 }
