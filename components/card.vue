@@ -1,5 +1,5 @@
 <template lang="pug">
-.card
+.card(:data-swiped="is_swiped" :data-position="restaurant_id" @transitionend="NoticeAnimationEnd")
   .card-wrapper
     .category
       .category_name
@@ -8,8 +8,8 @@
         .category_name-text {{restaurant_data.category_name}}
       .category_prefecture
         .category_prefecture-text {{restaurant_data.prefecture}}
-        font-awesome-icon(icon="map-marker-alt").category_pref-icon
-    restaurantImg(:imgs="restaurant_data.images")
+        font-awesome-icon(icon="map-marker-alt" v-if="restaurant_data.prefecture").category_pref-icon
+    restaurantImg(:imgs="restaurant_data.images" ref="restaurantImg")
     .restaurant
       .restaurant_name {{restaurant_data.name}}
       .restaurant_data_list
@@ -20,6 +20,7 @@
           font-awesome-icon(icon="clock").restaurant_data_icon
           .restaurant_data_value {{restaurant_data.time}}
       .catch {{restaurant_data.catch}}
+
 </template>
 
 <script>
@@ -29,7 +30,11 @@ export default {
   components: {
     restaurantImg
   },
-  props: ["restaurant_data"],
+  props: [
+    "restaurant_data",
+    "restaurant_id",
+    "is_swiped"
+  ],
   methods:{
     categoryImg(category){
       switch(category){
@@ -40,6 +45,12 @@ export default {
         case "ラーメン": return "ramen"; break;
         default: return null; break;
       }
+    },
+    NoticeAnimationEnd() {
+      this.$emit("finishAnimation",this.is_swiped)
+    },
+    resetImgId(){
+      this.$refs.restaurantImg.resetImgId();
     }
   }
 }
@@ -58,14 +69,39 @@ export default {
   padding: 6px;
   background: $theme-gradient;
   border-radius: 12px;
-  overflow-y: overlay;
+  transition: left 0s $bezier-ease-in;
   .card-wrapper {
     width: 100%;
     height: 100%;
     border-radius: 6px;
     background: #fff;
+    overflow-y: overlay;
   }
 }
+
+.card[data-position="0"]{
+  z-index: 2;
+}
+
+.card[data-position="0"][data-swiped="right"]{
+  left:120%;
+  transition: left 0.1s $bezier-ease-in;
+}
+
+.card[data-position="0"][data-swiped="left"]{
+  left:-120%;
+  transition: left 0.1s $bezier-ease-in;
+}
+
+.card[data-position="1"]{
+  transform:scale(0.8);
+}
+
+.card[data-position="1"][data-swiped="left"]{
+  transition: transform 0.1s $bezier-ease-in;
+  transform:scale(1.0);
+}
+
 .category {
   width: 100%;
   height: 46px;

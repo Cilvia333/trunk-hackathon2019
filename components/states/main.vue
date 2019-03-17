@@ -5,9 +5,17 @@
       img.umbrella(src="~/assets/imgs/umbrella.svg")
     .text 君の行く店はココだ !
   .cards
-    .cards-wrapper: CardWrapper
-  nuxt-link(:to="go_link")
-    .go-button: .go-text Go!
+    .cards-wrapper
+      CardWrapper(@updateRestaurant="setRestaurantLink")
+      .text カードが無くなったぞ！
+  div(v-if="is_link_active===true")
+    a(:href="go_link")
+      .go-button()
+        .go-text Go!
+  div(v-if="is_link_active===false")
+    .reload-botton(@click="reloadPage")
+      .go-button()
+        .go-text More and More!!!
 </template>
 
 <script>
@@ -19,12 +27,20 @@ export default {
   },
   data(){
     return{
-      go_link:""
+      go_link:"",
+      is_link_active: true
     }
   },
-  restaurantLinkData() {
-    if(this.$store.state.restaurants != null){
-      return this.$store.state.restaurants
+  methods: {
+    setRestaurantLink(link) {
+      this.go_link = link
+      if(this.go_link == ""){
+        this.is_link_active = false
+      }
+    },
+    reloadPage(){
+      this.$store.dispatch("changeAddress")
+      this.$emit("reload")
     }
   }
 }
@@ -81,11 +97,43 @@ menu{
   height: 100vh;
   padding-top: 60px; /*menu-bar*/
   padding-bottom: (60px + 20px);
+
   .cards-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
     padding: 20px;
+
+    .text {
+      position: absolute;
+      display: block;
+      top: 0;
+      bottom: 0;
+      margin:auto;
+      text-align: center;
+      width: calc(100% - 40px);
+      height:min-content;
+    }
+  }
+}
+
+a {
+  .go-button{
+    filter: grayscale(0%);
+    filter: brightness(100%);
+    &:active{
+      filter: brightness(130%);
+    }
+  }
+}
+
+nuxt-link {
+  .go-button{
+    filter: grayscale(100%);
+    filter: brightness(100%);
+    &:active{
+      filter: brightness(130%);
+    }
   }
 }
 
@@ -104,10 +152,7 @@ menu{
   justify-content: center;
   align-items: center;
   transition: .3s $bezier-ease-out;
-  filter: brightness(100%);
-  &:active{
-    filter: brightness(130%);
-  }
+  
   .go-text {
     @include noto-font(2.2rem,#fff);
   }

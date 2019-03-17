@@ -2,7 +2,8 @@ import axios from 'axios'
 
 export const state = () => {
     return {
-        restaurants: []
+        restaurants: [],
+        address: "search"
     }
 };
 
@@ -15,23 +16,35 @@ export const mutations = {
             [restaurants[i], restaurants[rand]] = [restaurants[rand], restaurants[i]]
         }
         state.restaurants = restaurants
+    },
+    setAddress(state, address) {
+        state.address = address;
     }
 };
 
 export const actions = {
-    async getStoresFromGPS ({commit}, position) {
+    async getStoresFromGPS ({commit,state}, position) {
         /*const res = await this.$axios.$get('/api/todos', {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
         })
         */
-        const res = await this.$axios.$get('https://ec293549.ngrok.io/search',{
+        const res = await this.$axios.$get('https://r3n3mmylth.execute-api.ap-northeast-1.amazonaws.com/dev/' + state.address,{
             params :{
-                latitude: "34.679193",
-                longitude: "135.495257"
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
             }
         })
         console.log(position.coords.latitude)
         commit("setRetaurants", res)
+    },
+    changeAddress({commit,state}){
+        if(state.address == "search"){
+            commit("setAddress","search-all")
+        }
+        else {
+            commit("setAddress","search")
+        }
+        
     }
 };
