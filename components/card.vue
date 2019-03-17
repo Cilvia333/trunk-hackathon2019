@@ -64,8 +64,6 @@ export default {
     Onscroll(e) {
       var el = document.getElementsByClassName("card-wrapper")[0]
       var scroll_end_height = el.scrollHeight - el.clientHeight
-      console.log(scroll_end_height)
-      console.log(e.target.scrollTop)
       if(e.target.scrollTop >= scroll_end_height-2){
         this.is_scroll_end = false
       }

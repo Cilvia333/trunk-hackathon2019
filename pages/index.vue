@@ -34,13 +34,11 @@ export default {
   },
   watch: {
     restaurantsData(val) {
-      console.log(val)
       if(val != null) {
         this.changeState("Main")
       }
       else{
         this.changeState("Error")
-        console.log(hogehoge)
       }
     }
   },

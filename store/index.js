@@ -35,7 +35,6 @@ export const actions = {
                 longitude: position.coords.longitude
             }
         })
-        console.log(position.coords.latitude)
         commit("setRetaurants", res)
     },
     changeAddress({commit,state}){
