@@ -63,7 +63,7 @@ export default {
     width: 100%;
     height: 100%;
     border-radius: 6px;
-    background: #ffffff;
+    background: #fff;
     overflow-y: overlay;
   }
 }
