@@ -28,8 +28,8 @@ export default {
     for(var i = 0; i < 2; i++){
       this.cards_data.push(this.restaurantsData[this.now_restrant_id])
       this.now_restrant_id++;
-      this.$emit("updateRestaurant",this.cards_data[0].link)
     }
+    this.$emit("updateRestaurant",this.cards_data[0].link)
   },
   methods: {
     deleteCard(position) {
@@ -38,16 +38,18 @@ export default {
         if(this.now_restrant_id+1 < this.restaurantsData.length){
           this.cards_data.push(this.restaurantsData[this.now_restrant_id])
           this.now_restrant_id++
+        }
+        if(this.cards_data.length == 0) {
+          this.$emit("updateRestaurant","")
+        }
+        else {
           this.$emit("updateRestaurant",this.cards_data[0].link)
         }
         this.is_swiped = "false"
       }
     },
     onSwipe(ev) {
-      if(ev == "right") {
-        this.is_swiped = "right"
-      }
-      else if(ev == "left") {
+      if(ev == "left") {
         this.is_swiped = "left"
       }
       console.log(ev)

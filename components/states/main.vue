@@ -8,8 +8,14 @@
     .cards-wrapper
       CardWrapper(@updateRestaurant="setRestaurantLink")
       .text カードが無くなったぞ！
-  a(:href="go_link")
-    .go-button: .go-text Go!
+  div(v-if="is_link_active===true")
+    a(:href="go_link")
+      .go-button()
+        .go-text Go!
+  div(v-if="is_link_active===false")
+    .reload-botton(@click="reloadPage")
+      .go-button()
+        .go-text ほかのを見つける
 </template>
 
 <script>
@@ -21,12 +27,20 @@ export default {
   },
   data(){
     return{
-      go_link:""
+      go_link:"",
+      is_link_active: true
     }
   },
   methods: {
     setRestaurantLink(link) {
       this.go_link = link
+      if(this.go_link == ""){
+        this.is_link_active = false
+      }
+    },
+    reloadPage(){
+      this.$store.dispatch("changeAddress")
+      this.$emit("reload")
     }
   }
 }
@@ -103,6 +117,26 @@ menu{
   }
 }
 
+a {
+  .go-button{
+    filter: grayscale(0%);
+    filter: brightness(100%);
+    &:active{
+      filter: brightness(130%);
+    }
+  }
+}
+
+nuxt-link {
+  .go-button{
+    filter: grayscale(100%);
+    filter: brightness(100%);
+    &:active{
+      filter: brightness(130%);
+    }
+  }
+}
+
 .go-button {
   position: absolute;
   bottom: 20px;
@@ -118,10 +152,7 @@ menu{
   justify-content: center;
   align-items: center;
   transition: .3s $bezier-ease-out;
-  filter: brightness(100%);
-  &:active{
-    filter: brightness(130%);
-  }
+  
   .go-text {
     @include noto-font(2.2rem,#fff);
   }
