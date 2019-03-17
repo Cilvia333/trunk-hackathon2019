@@ -1,7 +1,7 @@
 <template lang="pug">
   div
-    Main(v-if = "nowState === 'Main'")
-    Error(v-if = "nowState ==='Error'")
+    Main(v-if = "nowState === 'Main'" @reload="reloadPage")
+    Error(v-if = "nowState ==='Error'" v-bind:errorCode="errorCode")
     transition
       Loading(v-show = "nowState ==='Loading'")
 </template>
@@ -19,11 +19,12 @@ export default {
   },
   data: function() {
     return {
-      nowState: "Loading"
+      nowState: "Loading",
+      errorCode: null
     }
   },
   async mounted() {
-    navigator.geolocation.getCurrentPosition(this.loadStoreData)
+    navigator.geolocation.getCurrentPosition(this.loadStoreData, this.missingGeolocation)
   },
   computed: {
     restaurantsData() {
@@ -38,6 +39,7 @@ export default {
       }
       else{
         this.changeState("Error")
+        console.log(hogehoge)
       }
     }
   },
@@ -45,9 +47,16 @@ export default {
     async loadStoreData(position) {
       await this.$store.dispatch("getStoresFromGPS",position)
     },
+    missingGeolocation(code) {
+      this.changeState("Error")
+      this.errorCode = code.code
+    },
     changeState(state){
       this.nowState = state
-      console.log(this.nowState)
+    },
+    reloadPage() {
+      this.changeState("Loading")
+      navigator.geolocation.getCurrentPosition(this.loadStoreData, this.missingGeolocation)
     }
   }
 }
