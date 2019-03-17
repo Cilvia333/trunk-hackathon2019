@@ -20,6 +20,7 @@
           font-awesome-icon(icon="clock").restaurant_data_icon
           .restaurant_data_value {{restaurant_data.time}}
       .catch {{restaurant_data.catch}}
+
 </template>
 
 <script>
@@ -37,7 +38,7 @@ export default {
   methods:{
     categoryImg(category){
       switch(category){
-        case "たこ焼き": return "takoyaki"; break;
+        case "たこやき": return "takoyaki"; break;
         case "お好み焼き": return "okonomiyaki"; break;
         case "鹿せんべい": return "sikasenbei"; break;
         case "茶そば": return "tyasoba"; break;
@@ -62,12 +63,17 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 6px solid $theme-orange;
-  border: 6px solid $theme-gradient;
+  padding: 6px;
+  background: $theme-gradient;
   border-radius: 12px;
-  background: #fff;
   overflow-y: overlay;
   transition: left 0s $bezier-ease-in;
+  .card-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    background: #ffffff;
+  }
 }
 
 .card[data-position="0"]{
