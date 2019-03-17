@@ -20,6 +20,7 @@
           font-awesome-icon(icon="clock").restaurant_data_icon
           .restaurant_data_value {{restaurant_data.time}}
       .catch {{restaurant_data.catch}}
+  .scroll-shadow(:class="{'dropshadow': is_scroll_end}")
 
 </template>
 
@@ -37,16 +38,10 @@ export default {
   ],
   data() {
     return {
-      is_scroll_end: false,
-      scroll_end_height: 0
+      is_scroll_end: true
     }
   },
   mounted() {
-    this.$nextTick(() => {
-      var el = document.getElementsByClassName("card-wrapper")[0]
-      this.scroll_end_height = el.height - el.clientHeight - 5
-
-    }) 
   },
   methods:{
     categoryImg(category){
@@ -64,10 +59,18 @@ export default {
     },
     resetImgId(){
       this.$refs.restaurantImg.resetImgId();
+      this.is_scroll_end = true
     },
     Onscroll(e) {
-      if(e.target.scrollTop >= this.scroll_end_height){
-        console.log("hoge")
+      var el = document.getElementsByClassName("card-wrapper")[0]
+      var scroll_end_height = el.scrollHeight - el.clientHeight
+      console.log(scroll_end_height)
+      console.log(e.target.scrollTop)
+      if(e.target.scrollTop >= scroll_end_height-2){
+        this.is_scroll_end = false
+      }
+      else{
+        this.is_scroll_end = true
       }
     }
   }
@@ -89,6 +92,7 @@ export default {
   border-radius: 12px;
   transition: left 0s $bezier-ease-in;
   .card-wrapper {
+    position: relative;
     width: 100%;
     height: 100%;
     border-radius: 6px;
@@ -101,14 +105,9 @@ export default {
   z-index: 2;
 }
 
-.card[data-position="0"][data-swiped="right"]{
-  left:120%;
-  transition: left 0.1s $bezier-ease-in;
-}
-
 .card[data-position="0"][data-swiped="left"]{
   left:-120%;
-  transition: left 0.1s $bezier-ease-in;
+  transition: left 0.3s $bezier-ease-in;
 }
 
 .card[data-position="1"]{
@@ -192,6 +191,22 @@ export default {
 }
 .catch {
 
+}
+
+.scroll-shadow{
+  position: absolute;
+  bottom:6px;
+  left:6px;
+  width:calc(100% - 12px);
+  height:40px;
+  border-radius: 6px;
+  background: linear-gradient(0deg, rgba(#000,0.2) 0%,rgba(#fff,0) 80%, rgba(#fff,0) 100%);
+  opacity:0;
+  transition: .3s $bezier-ease-out;
+}
+
+.dropshadow{
+  opacity: 1;
 }
 </style>
 
