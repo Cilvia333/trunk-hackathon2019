@@ -74,14 +74,15 @@ export default {
     },
     initDropshadow(){
       var el = document.getElementsByClassName("card-wrapper")[1]
-      var scroll_end_height = el.scrollHeight - el.clientHeight
-      console.log(scroll_end_height)
-      console.log("hoge" + this.restaurant_id)
-      if(0 >= scroll_end_height){
-        this.is_scroll_end = false
-      }
-      else{
-        this.is_scroll_end = true
+      console.log(el)
+      if(el != undefined){
+        var scroll_end_height = el.scrollHeight - el.clientHeight
+        if(0 >= scroll_end_height){
+          this.is_scroll_end = false
+        }
+        else{
+          this.is_scroll_end = true
+        }
       }
     }
   }
