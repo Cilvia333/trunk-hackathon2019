@@ -74,7 +74,6 @@ export default {
     },
     initDropshadow(){
       var el = document.getElementsByClassName("card-wrapper")[1]
-      console.log(el)
       if(el != undefined){
         var scroll_end_height = el.scrollHeight - el.clientHeight
         if(0 >= scroll_end_height){
