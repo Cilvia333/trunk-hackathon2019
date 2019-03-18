@@ -33,7 +33,7 @@ export const actions = {
             longitude: position.coords.longitude
         })
         */
-        const res1 = await this.$axios.$get('https://r3n3mmaylth.execute-api.ap-northeast-1.amazonaws.com/dev/' + state.address,{
+        const res1 = await this.$axios.$get('https://r3n3mmylth.execute-api.ap-northeast-1.amazonaws.com/dev/' + state.address,{
             params :{
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
@@ -46,7 +46,7 @@ export const actions = {
         var res = res1
 
         if(res.message !== null){
-            const res2 = await this.$axios.$get('https://r3n3mamylth.execute-api.ap-northeast-1.amazonaws.com/dev/' + state.address,{
+            const res2 = await this.$axios.$get('https://r3n3mmylth.execute-api.ap-northeast-1.amazonaws.com/dev/' + state.address,{
                 params :{
                     longitude: 135.495257,
                     latitude: 34.679193
