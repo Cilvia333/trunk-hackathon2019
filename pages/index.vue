@@ -30,16 +30,24 @@ export default {
   computed: {
     restaurantsData() {
       return this.$store.state.restaurants
+    },
+    isServerError() {
+      return this.$store.state.is_error
     }
   },
   watch: {
     restaurantsData(val) {
-      if(val != null) {
+      if(val.length >= 0) {
         this.changeState("Main")
       }
       else{
         this.changeState("Error")
+        this.errorCode = 5
       }
+    },
+    isServerError(val) {
+      this.changeState("Error")
+      this.errorCode = 4
     }
   },
   methods: {
